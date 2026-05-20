@@ -1,0 +1,166 @@
+---
+---
+
+// Al Liwan Labs brand palette — derived from the logo
+$brand-navy:      #2C5681;
+$brand-navy-dark: #1F3F5F;
+$brand-grey:      #6B6B6B;
+$brand-grey-soft: #8E8E8E;
+$page-bg:         #FFFFFF;
+$text-color:      #2A2A2A;
+$rule-color:      #E4E4E4;
+
+// Minima overrides — must precede the @import
+$brand-color:     $brand-navy;
+$background-color: $page-bg;
+$text-color:      $text-color;
+$grey-color:      $brand-grey;
+$grey-color-light: lighten($brand-grey, 35%);
+$grey-color-dark:  $brand-navy-dark;
+$link-base-color:  $brand-navy;
+$link-visited-color: $brand-navy-dark;
+$link-hover-color: $text-color;
+
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$base-font-size: 17px;
+$base-line-height: 1.6;
+$content-width: 880px;
+$on-palm: 600px;
+$on-laptop: 880px;
+
+@import "minima";
+
+// ───────────────────────────────────────────────────────────────────
+// Site header — logo-led, restrained
+// ───────────────────────────────────────────────────────────────────
+
+.site-header {
+  border-top: 5px solid $brand-navy;
+  border-bottom: 1px solid $rule-color;
+  background: $page-bg;
+  padding: 1rem 0;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.site-brand {
+  display: inline-block;
+
+  .site-logo {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .page-link {
+    color: $brand-grey;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+
+    &:hover {
+      color: $brand-navy;
+    }
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// Content
+// ───────────────────────────────────────────────────────────────────
+
+.page-content { padding: 2.5rem 0; }
+
+h1, h2, h3 {
+  color: $brand-navy-dark;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-weight: 600; }
+h2 { font-weight: 600; margin-top: 2.5rem; }
+h3 { font-weight: 600; margin-top: 1.8rem; }
+
+blockquote {
+  border-left: 4px solid $brand-navy;
+  color: $text-color;
+  font-style: normal;
+  background: lighten($brand-navy, 60%);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+
+  th, td {
+    border: 1px solid $rule-color;
+    padding: 0.55rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: lighten($brand-navy, 62%);
+    color: $brand-navy-dark;
+    font-weight: 600;
+  }
+}
+
+code {
+  background: #F4F6F8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #F8F9FB;
+  border: 1px solid $rule-color;
+  border-left: 4px solid $brand-navy;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9em;
+
+  code {
+    background: transparent;
+    padding: 0;
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// Recipe page tweaks
+// ───────────────────────────────────────────────────────────────────
+
+.post, .page {
+  .post-meta, .page-meta {
+    color: $brand-grey-soft;
+    font-size: 0.9rem;
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// Footer
+// ───────────────────────────────────────────────────────────────────
+
+.site-footer {
+  border-top: 1px solid $rule-color;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: $brand-grey;
+}

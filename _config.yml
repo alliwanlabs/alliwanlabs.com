@@ -1,0 +1,47 @@
+title: Al Liwan Labs
+email:
+description: >-
+  Patterns for working with AI in contexts that matter. A library of recipes,
+  each tested in production, each explicit about when and how it fails.
+baseurl: ""
+url: "https://alliwanlabs.com"
+author:
+  name: David Orban
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  recipes:
+    output: true
+    permalink: /recipes/:path/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "recipes"
+    values:
+      layout: "page"
+
+# Exclude from publish
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
+  - .gitignore
+
+# Theme settings
+minima:
+  skin: classic
+  social_links:
+    - { platform: github, user_url: "https://github.com/davidorban" }
+
+# SEO
+lang: en
