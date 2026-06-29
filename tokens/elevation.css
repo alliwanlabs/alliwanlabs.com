@@ -1,0 +1,36 @@
+/* ============================================================
+   Al Liwan Labs — Elevation & Motion Tokens
+   ------------------------------------------------------------
+   Shadows are soft, low-spread and navy-tinted (Primary Navy) —
+   institutional restraint, never the heavy drop-shadow the logo forbids.
+   Motion is calm and assured: short, ease-out, no bounce.
+   ============================================================ */
+
+:root {
+  /* ---- Elevation (Primary-Navy-tinted, restrained) ---- */
+  --shadow-xs:  0 1px 2px rgba(0, 18, 48, 0.06);
+  --shadow-sm:  0 1px 3px rgba(0, 18, 48, 0.08),
+                0 1px 2px rgba(0, 18, 48, 0.04);
+  --shadow-md:  0 4px 12px rgba(0, 18, 48, 0.09),
+                0 2px 4px rgba(0, 18, 48, 0.05);
+  --shadow-lg:  0 12px 28px rgba(0, 18, 48, 0.13),
+                0 4px 8px rgba(0, 18, 48, 0.06);
+  --shadow-xl:  0 24px 56px rgba(0, 18, 48, 0.17),
+                0 8px 16px rgba(0, 18, 48, 0.08);
+
+  /* Ring used for focus states — Primary Navy */
+  --ring-focus: 0 0 0 3px rgba(0, 44, 107, 0.30);
+  --ring-inset-hair: inset 0 0 0 1px var(--border-subtle);
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.45, 0, 0.2, 1); /* @kind other */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+
+  --duration-fast:   120ms; /* @kind other */
+  --duration-base:   180ms; /* @kind other */
+  --duration-slow:   260ms; /* @kind other */
+  --duration-slower: 420ms; /* @kind other */
+
+  --transition-base: all var(--duration-base) var(--ease-out);
+}

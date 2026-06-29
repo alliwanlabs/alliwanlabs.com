@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Al Liwan Labs</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--navy-950);
+    font-family: var(--font-sans);
+    overflow: hidden;
+    color: var(--white);
+  }
+  #net { position: fixed; inset: 0; display: block; z-index: 0; }
+
+  .stage {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(40px, 7vh, 88px);
+    padding: 32px;
+    pointer-events: none;            /* let the canvas receive the mouse, except interactive bits */
+  }
+
+  .logo {
+    width: min(460px, 72vw);
+    height: auto;
+    filter: drop-shadow(0 8px 40px rgba(13, 28, 43, 0.55));
+    opacity: 1;
+  }
+
+  /* Newsletter affordance */
+  .cta { pointer-events: auto; height: 64px; display: flex; align-items: center; justify-content: center; }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--navy-200);
+    padding: 12px 4px;
+    transition: color var(--duration-base) var(--ease-out);
+    opacity: 1;
+  }
+  .link:hover { color: var(--white); }
+  .link .arrow { transition: transform var(--duration-base) var(--ease-out); display: inline-flex; }
+  .link:hover .arrow { transform: translateX(4px); }
+  .link::after {
+    content: ""; position: absolute; /* underline handled per-element below */
+  }
+
+  /* Inline form */
+  .form {
+    pointer-events: auto;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-on-navy);
+    border-radius: var(--radius-full);
+    padding: 7px 7px 7px 22px;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-lg);
+  }
+  .form.show { display: flex; }
+  .form input {
+    background: none; border: none; outline: none;
+    font-family: var(--font-sans); font-size: var(--text-md);
+    color: var(--white); width: min(300px, 56vw);
+  }
+  .form input::placeholder { color: var(--navy-300); }
+  .form button {
+    flex: none; width: 44px; height: 44px; border: none; cursor: pointer;
+    border-radius: var(--radius-full); background: var(--white); color: var(--navy-800);
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  }
+  .form button:hover { background: var(--navy-100); }
+  .form button:active { transform: scale(0.96); }
+
+  .done {
+    pointer-events: auto;
+    display: none;
+    align-items: center; gap: 10px;
+    font-size: var(--text-md); color: var(--navy-100);
+  }
+  .done.show { display: inline-flex; }
+  .done .tick {
+    width: 26px; height: 26px; border-radius: 50%; background: var(--success-600);
+    display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  }
+
+  .footer {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1;
+    display: flex; justify-content: center; padding: 22px;
+    font-family: var(--font-mono); font-size: var(--text-3xs);
+    letter-spacing: var(--tracking-wide); color: var(--navy-400);
+    pointer-events: none;
+  }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(0.98); } to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo, .link { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+  <canvas id="net"></canvas>
+
+  <div class="stage">
+    <img class="logo" src="assets/logo/alliwan-labs-logo-white.png" alt="Al Liwan Labs" />
+    <div class="cta">
+      <button class="link" id="open" aria-label="Sign up for our newsletter">
+        Sign up for our newsletter
+        <span class="arrow">→</span>
+      </button>
+      <form class="form" id="form" novalidate>
+        <input id="email" type="email" placeholder="you@email.com" autocomplete="email" required />
+        <button type="submit" aria-label="Subscribe">→</button>
+      </form>
+      <div class="done" id="done">
+        <span class="tick">✓</span>
+        <span>You're on the list. We'll be in touch.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">ABU DHABI · UNITED ARAB EMIRATES</div>
+
+  <script>
+    /* ---------------- Point-network field ---------------- */
+    const canvas = document.getElementById('net');
+    const ctx = canvas.getContext('2d');
+    let W, H, DPR;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize() {
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.width = Math.floor(innerWidth * DPR);
+      H = canvas.height = Math.floor(innerHeight * DPR);
+      canvas.style.width = innerWidth + 'px';
+      canvas.style.height = innerHeight + 'px';
+    }
+    resize();
+    addEventListener('resize', () => { resize(); seed(); });
+
+    // palette (on navy)
+    const COL_LINE = '139,160,196';   // navy-300
+    const COL_DOT  = '221,228,239';   // navy-100 / near white
+    const COL_GOLD = '52,85,147';     // Deep Blue accent (sparing)
+
+    let pts = [];
+    const AREA_PER = 13000;           // density
+    function seed() {
+      const n = Math.min(190, Math.max(60, Math.floor((innerWidth * innerHeight) / AREA_PER)));
+      pts = [];
+      for (let i = 0; i < n; i++) {
+        pts.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.18 * DPR,
+          vy: (Math.random() - 0.5) * 0.18 * DPR,
+          r: (Math.random() * 1.6 + 1.1) * DPR,
+          gold: Math.random() < 0.06
+        });
+      }
+    }
+    seed();
+
+    const mouse = { x: -9999, y: -9999, active: false };
+    addEventListener('mousemove', e => { mouse.x = e.clientX * DPR; mouse.y = e.clientY * DPR; mouse.active = true; });
+    addEventListener('mouseleave', () => { mouse.active = false; });
+    addEventListener('touchmove', e => {
+      if (e.touches[0]) { mouse.x = e.touches[0].clientX * DPR; mouse.y = e.touches[0].clientY * DPR; mouse.active = true; }
+    }, { passive: true });
+
+    const LINK = 150 * DPR;           // particle-particle connect distance
+    const MR   = 230 * DPR;           // mouse influence radius
+    const cx = () => W / 2, cy = () => H / 2;
+
+    function step() {
+      ctx.clearRect(0, 0, W, H);
+
+      for (const p of pts) {
+        // gentle global swirl around centre
+        const dx = p.x - cx(), dy = p.y - cy();
+        const dist = Math.hypot(dx, dy) || 1;
+        const tx = -dy / dist, ty = dx / dist;     // tangent
+        p.vx += tx * 0.006 * DPR;
+        p.vy += ty * 0.006 * DPR;
+        // slight pull to keep them from flying out
+        p.vx -= (dx / dist) * 0.0016 * DPR;
+        p.vy -= (dy / dist) * 0.0016 * DPR;
+
+        // mouse interaction: repel + swirl
+        if (mouse.active) {
+          const mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+          const md = Math.hypot(mdx, mdy);
+          if (md < MR && md > 0.1) {
+            const f = (1 - md / MR);
+            p.vx += (mdx / md) * f * 0.9 * DPR;       // push away
+            p.vy += (mdy / md) * f * 0.9 * DPR;
+            p.vx += (-mdy / md) * f * 0.5 * DPR;      // swirl tangentially
+            p.vy += (mdx / md) * f * 0.5 * DPR;
+          }
+        }
+
+        // damping + speed clamp
+        p.vx *= 0.94; p.vy *= 0.94;
+        const sp = Math.hypot(p.vx, p.vy), max = 1.7 * DPR;
+        if (sp > max) { p.vx = p.vx / sp * max; p.vy = p.vy / sp * max; }
+
+        p.x += p.vx; p.y += p.vy;
+
+        // soft wrap
+        const m = 40 * DPR;
+        if (p.x < -m) p.x = W + m; else if (p.x > W + m) p.x = -m;
+        if (p.y < -m) p.y = H + m; else if (p.y > H + m) p.y = -m;
+      }
+
+      // connections
+      for (let i = 0; i < pts.length; i++) {
+        const a = pts[i];
+        for (let j = i + 1; j < pts.length; j++) {
+          const b = pts[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK * LINK) {
+            const d = Math.sqrt(d2);
+            const op = (1 - d / LINK) * 0.5;
+            ctx.strokeStyle = 'rgba(' + COL_LINE + ',' + op.toFixed(3) + ')';
+            ctx.lineWidth = DPR;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        // line to mouse
+        if (mouse.active) {
+          const dx = a.x - mouse.x, dy = a.y - mouse.y, d = Math.hypot(dx, dy);
+          if (d < MR) {
+            const op = (1 - d / MR) * 0.7;
+            ctx.strokeStyle = 'rgba(255,255,255,' + op.toFixed(3) + ')';
+            ctx.lineWidth = DPR;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          }
+        }
+      }
+
+      // dots
+      for (const p of pts) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.gold ? 'rgba(' + COL_GOLD + ',0.9)' : 'rgba(' + COL_DOT + ',0.85)';
+        ctx.fill();
+      }
+
+      // cursor node
+      if (mouse.active) {
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 3 * DPR, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.95)';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(step);
+    }
+    if (!reduce) { step(); }
+    else { // static frame for reduced motion
+      step = null;
+      // draw one calm frame
+      (function once(){ ctx.clearRect(0,0,W,H);
+        for (let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j];const dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<LINK){ctx.strokeStyle='rgba('+COL_LINE+','+((1-d/LINK)*0.4).toFixed(3)+')';ctx.lineWidth=DPR;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+        for(const p of pts){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle=p.gold?'rgba('+COL_GOLD+',0.9)':'rgba('+COL_DOT+',0.85)';ctx.fill();}
+      })();
+    }
+
+    /* ---------------- Newsletter form ---------------- */
+    const openBtn = document.getElementById('open');
+    const form = document.getElementById('form');
+    const done = document.getElementById('done');
+    const email = document.getElementById('email');
+
+    openBtn.addEventListener('click', () => {
+      openBtn.style.display = 'none';
+      form.classList.add('show');
+      setTimeout(() => email.focus(), 60);
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!email.value || !email.checkValidity()) { email.focus(); return; }
+      form.classList.remove('show');
+      form.style.display = 'none';
+      done.classList.add('show');
+    });
+  </script>
+</body>
+</html>

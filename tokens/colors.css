@@ -1,0 +1,112 @@
+/* ============================================================
+   Al Liwan — Color Tokens  (OFFICIAL Al Liwan Group brand palette)
+   ------------------------------------------------------------
+   Brand palette (from the Al Liwan Group Brand Guidelines, 2026):
+     Primary Navy   #002C6B  — signature; the arch, headings, key UI
+     Deep Blue      #345593  — secondary brand blue; supporting accents
+     Light Neutral  #EFEAE7  — page backgrounds (NEVER pure #fff)
+     Steel Gray     #77787C  — wordmark & DEFAULT body text (not black)
+
+   "Deep navy anchors trust and institutional weight, while neutral
+    tones maintain clarity and balance." — brand book, 3.1.
+
+   Conventions: Primary Navy is the signature; body text is Steel
+   Gray; page backgrounds are Light Neutral; Deep Blue is the
+   secondary blue for hover/links/data accents.
+   Solid colour only — no gradients (brand rule).
+   ============================================================ */
+
+:root {
+  /* ---- Navy scale (primary / signature) ---- */
+  --navy-950: #00091a;
+  --navy-900: #001230;
+  --navy-800: #001b45;
+  --navy-700: #002357;
+  --navy-600: #002c6b;   /* ◀ BRAND PRIMARY — Primary Navy, the arch */
+  --navy-500: #345593;   /* ◀ Deep Blue — secondary brand blue */
+  --navy-400: #5a78ac;
+  --navy-300: #8ba0c4;
+  --navy-200: #bcc8de;
+  --navy-100: #dde4ef;
+  --navy-50:  #eef2f8;
+
+  /* ---- Steel Gray scale (neutral — the wordmark & body text) ---- */
+  --black:    #0b0b0b;   /* near-black for code / dense data / strong contrast (never #000) */
+  --ink:      #1a1b1d;   /* darkest cool neutral */
+  --gray-900: #25262a;
+  --gray-800: #34353a;
+  --gray-700: #4f5054;
+  --gray-600: #77787c;   /* ◀ Steel Gray — DEFAULT body text */
+  --gray-500: #939498;
+  --gray-400: #b2b3b7;
+  --gray-300: #ccced1;
+  --gray-200: #e0e1e3;
+  --gray-100: #eceded;
+  --gray-50:  #f5f5f6;
+
+  /* ---- Light Neutral (warm paper — page backgrounds) ---- */
+  --neutral-100: #f6f3f1;
+  --neutral-200: #e4ddd8;
+  --pearl:    #efeae7;   /* Light Neutral — page backgrounds (= --neutral) */
+  --neutral:  #efeae7;   /* alias for Light Neutral */
+  --white:    #ffffff;   /* reserved for ELEVATED surfaces (cards), not page bg */
+
+  /* ---- Signal: interactive / links / focus — Deep Blue family ---- */
+  --signal-700: var(--navy-700);
+  --signal-600: var(--navy-600);
+  --signal-500: var(--navy-500);   /* links, focus, live / data accents — Deep Blue */
+  --signal-300: var(--navy-300);
+  --signal-100: var(--navy-100);
+
+  /* ---- Semantic status (functional UI only — NOT brand colours) ---- */
+  --success-600: #2e7d5b;
+  --success-100: #dbeee5;
+  --warning-600: #9a6b1e;
+  --warning-100: #f0e7d4;
+  --danger-600:  #b4452f;
+  --danger-100:  #f5ddd6;
+  --info-600:    var(--navy-600);
+  --info-100:    var(--navy-100);
+
+  /* ============================================================
+     Semantic aliases — reference these in components.
+     ============================================================ */
+
+  /* Text */
+  --text-heading:   var(--navy-600);   /* Primary Navy — primary headings */
+  --text-strong:    var(--navy-800);   /* high-contrast dark navy */
+  --text-body:      var(--gray-600);   /* Steel Gray — default body */
+  --text-muted:     var(--gray-500);
+  --text-subtle:    var(--gray-400);
+  --text-code:      var(--black);      /* near-black — code / dense data */
+  --text-on-navy:   var(--white);
+  --text-on-navy-muted: var(--navy-200);
+  --text-brand:     var(--navy-600);
+  --text-link:      var(--navy-500);   /* Deep Blue */
+
+  /* Surfaces */
+  --surface-page:    var(--pearl);     /* Light Neutral, never pure white */
+  --surface-card:    var(--white);     /* elevated cards lift off Light Neutral */
+  --surface-sunken:  var(--navy-50);
+  --surface-inverse: var(--navy-900);
+  --surface-brand:   var(--navy-600);
+  --surface-hover:   var(--gray-100);
+  --surface-active:  var(--gray-200);
+
+  /* Borders */
+  --border-subtle:  var(--gray-200);
+  --border-default: var(--gray-300);
+  --border-strong:  var(--gray-400);
+  --border-brand:   var(--navy-600);
+  --border-on-navy: rgba(255, 255, 255, 0.18);
+
+  /* Interactive / brand actions */
+  --action-bg:          var(--navy-600);
+  --action-bg-hover:    var(--navy-500);   /* Deep Blue on hover */
+  --action-bg-active:   var(--navy-700);
+  --action-fg:          var(--white);
+  --focus-ring:         var(--navy-500);
+
+  /* Misc */
+  --overlay-scrim:  rgba(0, 18, 48, 0.55);
+}

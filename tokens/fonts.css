@@ -1,0 +1,20 @@
+/* ============================================================
+   Al Liwan — Webfonts
+   ------------------------------------------------------------
+   Poppins       — Latin display, headings, body (brand book 3.2).
+   Cairo         — Arabic web fallback. The brand Arabic face is
+                   "Futura 100 Arabic" (brand book 3.3), which is
+                   not web-licensed; Cairo is the closest available
+                   geometric Arabic for screen use.
+   Aptos         — system fallback when the brand font is not
+                   supported, e.g. Word / PowerPoint / email
+                   (brand book 3.4). Referenced in the font stacks;
+                   it ships with the OS, so no @font-face is needed.
+   IBM Plex Mono — tabular figures, tickers, code (Labs add, approved).
+
+   Poppins / Cairo / IBM Plex Mono load from the Google Fonts CDN
+   for fidelity. For a fully offline build, self-host their woff2
+   binaries and replace the @import below with local @font-face.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cairo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
