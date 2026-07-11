@@ -1,0 +1,23 @@
+# Al Liwan Labs
+
+> Al Liwan Labs is a wholly-owned entity of Al Liwan Group (Abu Dhabi, UAE) that develops and tests AI capabilities at arm's length from the group's core operating business, so the business adopts only what has been proven. Tagline: "Technology innovation, built to be trusted." Led by David Orban, Managing Director.
+
+Key facts:
+- The Lab experiments in a ring-fenced setting, compliant by construction; only what survives testing is offered to the wider group.
+- The problem it works on: enterprise AI runs between two failure modes — unsupervised agents acting where they should not, and human-in-the-loop requirements so heavy that promised productivity never arrives. The Lab's work is calibrating the space in between, defensibly to all stakeholders.
+- Proven patterns are published as "recipes", each explicit about when it works and how it fails.
+- Contact: info@alliwanlabs.com
+
+## Pages
+
+- [Announcement](https://alliwanlabs.com/announcement/): "Introducing Al Liwan Labs" — the founding essay by David Orban
+- [About](https://alliwanlabs.com/about/): what the Lab is, who runs it, where it operates
+- [Mission](https://alliwanlabs.com/mission/): the problem, the working principles, an open invitation to compare notes
+- [Recipe Library](https://library.alliwanlabs.com): tested patterns for working with AI (parts gated during restricted release)
+- [Terms of Use](https://alliwanlabs.com/terms/): plain-language terms
+- [Privacy Policy](https://alliwanlabs.com/privacy/): what the site collects (very little), in plain language
+
+## Related
+
+- [David Orban](https://davidorban.com): Managing Director's personal site and writing
+- [Al Liwan Group](https://alliwan.com): the parent group

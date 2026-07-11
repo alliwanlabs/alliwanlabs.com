@@ -11,6 +11,20 @@
 <meta property="og:url" content="https://alliwanlabs.com/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="assets/images/logo.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Al Liwan Labs",
+  "url": "https://alliwanlabs.com",
+  "logo": "https://alliwanlabs.com/assets/images/logo.png",
+  "slogan": "Technology innovation, built to be trusted",
+  "email": "info@alliwanlabs.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE" },
+  "parentOrganization": { "@type": "Organization", "name": "Al Liwan Group", "url": "https://alliwan.com" },
+  "founder": { "@type": "Person", "name": "David Orban", "url": "https://davidorban.com" }
+}
+</script>
 <link rel="stylesheet" href="styles.css" />
 <style>
   * { box-sizing: border-box; }
@@ -155,6 +169,7 @@
   </div>
 
   <div class="footer">
+    <a href="/announcement/">ANNOUNCEMENT</a>
     <a href="/about/">ABOUT</a>
     <a href="/mission/">MISSION</a>
     <a href="/terms/">TERMS</a>
@@ -319,12 +334,30 @@
       form.classList.add('show');
       setTimeout(() => email.focus(), 60);
     });
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       if (!email.value || !email.checkValidity()) { email.focus(); return; }
-      form.classList.remove('show');
-      form.style.display = 'none';
-      done.classList.add('show');
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.value.trim() })
+        });
+        if (!res.ok) throw new Error('subscribe failed');
+        form.classList.remove('show');
+        form.style.display = 'none';
+        done.classList.add('show');
+      } catch (err) {
+        btn.disabled = false;
+        done.querySelector('span:last-child').innerHTML =
+          'That didn\'t go through — email <a href="mailto:info@alliwanlabs.com" style="color:inherit">info@alliwanlabs.com</a> and we\'ll add you.';
+        done.querySelector('.tick').style.background = 'var(--navy-500)';
+        form.classList.remove('show');
+        form.style.display = 'none';
+        done.classList.add('show');
+      }
     });
   </script>
 </body>

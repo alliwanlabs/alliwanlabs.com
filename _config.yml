@@ -13,6 +13,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Collections
 collections:
@@ -36,6 +37,8 @@ exclude:
   - node_modules
   - README.md
   - .gitignore
+  - workers
+  - scripts
 
 # Theme settings
 minima:

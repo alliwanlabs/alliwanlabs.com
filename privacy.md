@@ -27,7 +27,7 @@ We don't sell personal data. We don't run third-party advertising or analytics t
 ## Your choices
 
 - **Unsubscribe** from the newsletter anytime via the link in any issue.
-- **Ask what we hold about you**, ask us to correct it, or ask us to delete it: email [contact@alliwanlabs.com](mailto:contact@alliwanlabs.com). We'll answer within 30 days.
+- **Ask what we hold about you**, ask us to correct it, or ask us to delete it: email [info@alliwanlabs.com](mailto:info@alliwanlabs.com). We'll answer within 30 days.
 
 ## Where data lives
 

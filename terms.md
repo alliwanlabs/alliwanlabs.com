@@ -10,7 +10,7 @@ These terms are written in plain language on purpose. They say what you can expe
 
 ## Who we are
 
-Al Liwan Labs is a wholly-owned entity of Al Liwan Group, based in Abu Dhabi, United Arab Emirates. When we say "we" on this page, that's who we mean. Questions about these terms: [contact@alliwanlabs.com](mailto:contact@alliwanlabs.com).
+Al Liwan Labs is a wholly-owned entity of Al Liwan Group, based in Abu Dhabi, United Arab Emirates. When we say "we" on this page, that's who we mean. Questions about these terms: [info@alliwanlabs.com](mailto:info@alliwanlabs.com).
 
 ## What this site is
 
