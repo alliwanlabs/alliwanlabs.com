@@ -11,7 +11,7 @@ The point of the arm's length is simple: the business adopts only what has been 
 
 ## What we do
 
-We build and test agentic AI workflows in a ring-fenced setting, compliant by construction. Only what survives that testing is offered to the wider group. The patterns that prove themselves in production become [recipes](https://library.alliwanlabs.com) — each one explicit about when it works and how it fails.
+We build and test agentic AI workflows in a ring-fenced setting, compliant by construction. Only what survives that testing is offered to the wider group. The patterns that prove themselves in production become recipes — each one explicit about when it works and how it fails.
 
 ## Who we are
 
