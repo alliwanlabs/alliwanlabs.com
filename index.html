@@ -57,10 +57,11 @@
     opacity: 1;
   }
 
-  /* Newsletter affordance */
-  .cta { pointer-events: auto; height: 64px; display: flex; align-items: center; justify-content: center; }
+  /* CTA links */
+  .cta { pointer-events: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
 
   .link {
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -82,47 +83,6 @@
   .link:hover .arrow { transform: translateX(4px); }
   .link::after {
     content: ""; position: absolute; /* underline handled per-element below */
-  }
-
-  /* Inline form */
-  .form {
-    pointer-events: auto;
-    display: none;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-on-navy);
-    border-radius: var(--radius-full);
-    padding: 7px 7px 7px 22px;
-    backdrop-filter: blur(8px);
-    box-shadow: var(--shadow-lg);
-  }
-  .form.show { display: flex; }
-  .form input {
-    background: none; border: none; outline: none;
-    font-family: var(--font-sans); font-size: var(--text-md);
-    color: var(--white); width: min(300px, 56vw);
-  }
-  .form input::placeholder { color: var(--navy-300); }
-  .form button {
-    flex: none; width: 44px; height: 44px; border: none; cursor: pointer;
-    border-radius: var(--radius-full); background: var(--white); color: var(--navy-800);
-    display: inline-flex; align-items: center; justify-content: center;
-    transition: background var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out);
-  }
-  .form button:hover { background: var(--navy-100); }
-  .form button:active { transform: scale(0.96); }
-
-  .done {
-    pointer-events: auto;
-    display: none;
-    align-items: center; gap: 10px;
-    font-size: var(--text-md); color: var(--navy-100);
-  }
-  .done.show { display: inline-flex; }
-  .done .tick {
-    width: 26px; height: 26px; border-radius: 50%; background: var(--success-600);
-    display: inline-flex; align-items: center; justify-content: center; color: #fff;
   }
 
   .footer {
@@ -153,18 +113,14 @@
   <div class="stage">
     <img class="logo" src="assets/logo/alliwan-labs-logo-white.png" alt="Al Liwan Labs" />
     <div class="cta">
-      <button class="link" id="open" aria-label="Sign up for our newsletter">
+      <a class="link" href="/announcement/">
+        Read our announcement
+        <span class="arrow">→</span>
+      </a>
+      <a class="link" href="https://news.alliwanlabs.com/subscribe">
         Sign up for our newsletter
         <span class="arrow">→</span>
-      </button>
-      <form class="form" id="form" novalidate>
-        <input id="email" type="email" placeholder="you@email.com" autocomplete="email" required />
-        <button type="submit" aria-label="Subscribe">→</button>
-      </form>
-      <div class="done" id="done">
-        <span class="tick">✓</span>
-        <span>You're on the list. We'll be in touch.</span>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -324,27 +280,6 @@
       })();
     }
 
-    /* ---------------- Newsletter form ---------------- */
-    const openBtn = document.getElementById('open');
-    const form = document.getElementById('form');
-    const done = document.getElementById('done');
-    const email = document.getElementById('email');
-
-    openBtn.addEventListener('click', () => {
-      openBtn.style.display = 'none';
-      form.classList.add('show');
-      setTimeout(() => email.focus(), 60);
-    });
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      if (!email.value || !email.checkValidity()) { email.focus(); return; }
-      // Newsletter runs on Substack (news.alliwanlabs.com) — hand off with the email prefilled.
-      form.classList.remove('show');
-      form.style.display = 'none';
-      done.querySelector('span:last-child').textContent = 'Taking you to our newsletter…';
-      done.classList.add('show');
-      location.href = 'https://news.alliwanlabs.com/subscribe?email=' + encodeURIComponent(email.value.trim());
-    });
   </script>
 </body>
 </html>
