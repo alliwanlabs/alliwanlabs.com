@@ -14,7 +14,7 @@ The short version: this site collects very little, and we like it that way. Here
 
 **Hosting and delivery logs.** The site is served by GitHub Pages through Cloudflare. Like almost every website, those providers keep standard server logs (IP address, browser type, pages requested) to run and protect the service. Their handling is governed by [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement) and [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).
 
-**Newsletter signup.** If you subscribe, we store your email address and use it for one thing: sending you the newsletter. We don't sell it, share it, or enrich it. Every issue has an unsubscribe link, and unsubscribing removes you.
+**Newsletter signup.** Our newsletter runs on Substack at [news.alliwanlabs.com](https://news.alliwanlabs.com). When you subscribe, Substack processes and stores your email address to deliver the newsletter; [Substack's privacy policy](https://substack.com/privacy) applies to that. We use the list for one thing: sending you the newsletter. We don't sell it, share it beyond Substack, or enrich it. Every issue has an unsubscribe link, and unsubscribing removes you.
 
 **Gated library access.** Parts of the [recipe library](https://library.alliwanlabs.com) require a login. Access is managed through Cloudflare Access, which processes your email address to verify you're on the access list and to log sign-ins. We see who accessed the gated area and when; we don't see more than that.
 

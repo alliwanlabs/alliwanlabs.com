@@ -172,6 +172,7 @@
     <a href="/announcement/">ANNOUNCEMENT</a>
     <a href="/about/">ABOUT</a>
     <a href="/mission/">MISSION</a>
+    <a href="https://news.alliwanlabs.com">NEWS</a>
     <a href="/terms/">TERMS</a>
     <a href="/privacy/">PRIVACY</a>
     <span>ABU DHABI · UNITED ARAB EMIRATES</span>
@@ -334,30 +335,15 @@
       form.classList.add('show');
       setTimeout(() => email.focus(), 60);
     });
-    form.addEventListener('submit', async e => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
       if (!email.value || !email.checkValidity()) { email.focus(); return; }
-      const btn = form.querySelector('button');
-      btn.disabled = true;
-      try {
-        const res = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email.value.trim() })
-        });
-        if (!res.ok) throw new Error('subscribe failed');
-        form.classList.remove('show');
-        form.style.display = 'none';
-        done.classList.add('show');
-      } catch (err) {
-        btn.disabled = false;
-        done.querySelector('span:last-child').innerHTML =
-          'That didn\'t go through — email <a href="mailto:info@alliwanlabs.com" style="color:inherit">info@alliwanlabs.com</a> and we\'ll add you.';
-        done.querySelector('.tick').style.background = 'var(--navy-500)';
-        form.classList.remove('show');
-        form.style.display = 'none';
-        done.classList.add('show');
-      }
+      // Newsletter runs on Substack (news.alliwanlabs.com) — hand off with the email prefilled.
+      form.classList.remove('show');
+      form.style.display = 'none';
+      done.querySelector('span:last-child').textContent = 'Taking you to our newsletter…';
+      done.classList.add('show');
+      location.href = 'https://news.alliwanlabs.com/subscribe?email=' + encodeURIComponent(email.value.trim());
     });
   </script>
 </body>

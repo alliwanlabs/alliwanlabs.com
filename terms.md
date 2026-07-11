@@ -30,7 +30,7 @@ The recipes describe what worked for us, in our context, at the time we wrote th
 
 ## Newsletter
 
-If you sign up for our newsletter, we use your email address to send you the newsletter and nothing else. Every issue includes an unsubscribe link. Details in our [privacy policy](/privacy/).
+Our newsletter runs on Substack at [news.alliwanlabs.com](https://news.alliwanlabs.com). If you sign up, we use your email address to send you the newsletter and nothing else. Every issue includes an unsubscribe link. Details in our [privacy policy](/privacy/).
 
 ## Changes
 

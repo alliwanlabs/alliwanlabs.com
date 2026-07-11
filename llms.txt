@@ -14,6 +14,7 @@ Key facts:
 - [About](https://alliwanlabs.com/about/): what the Lab is, who runs it, where it operates
 - [Mission](https://alliwanlabs.com/mission/): the problem, the working principles, an open invitation to compare notes
 - [Recipe Library](https://library.alliwanlabs.com): tested patterns for working with AI (parts gated during restricted release)
+- [Newsletter](https://news.alliwanlabs.com): the Al Liwan Labs newsletter, on Substack
 - [Terms of Use](https://alliwanlabs.com/terms/): plain-language terms
 - [Privacy Policy](https://alliwanlabs.com/privacy/): what the site collects (very little), in plain language
 
