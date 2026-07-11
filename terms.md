@@ -38,4 +38,4 @@ If we change these terms, we update this page and the date at the top. If a chan
 
 ## Governing law
 
-These terms are governed by the laws of the United Arab Emirates, and any dispute belongs to the courts of Abu Dhabi.
+These terms are governed by the laws of the Abu Dhabi Global Market (ADGM), and any dispute belongs to the ADGM Courts.
