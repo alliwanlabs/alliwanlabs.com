@@ -19,7 +19,7 @@ The discipline of the coming years is learning to calibrate the space in between
 
 - **Ring-fenced.** Experiments run at arm's length from the operating business, so nothing untested touches what must not break.
 - **Proven before adopted.** Only what survives testing is offered to the wider group, and each division embraces it at its own pace.
-- **Documented honestly.** What works becomes a [recipe](https://library.alliwanlabs.com), explicit about where and how it fails.
+- **Documented honestly.** What works becomes a recipe, explicit about where and how it fails.
 
 ## An invitation
 

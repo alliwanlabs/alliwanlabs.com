@@ -16,8 +16,6 @@ The short version: this site collects very little, and we like it that way. Here
 
 **Newsletter signup.** Our newsletter runs on Substack at [news.alliwanlabs.com](https://news.alliwanlabs.com). When you subscribe, Substack processes and stores your email address to deliver the newsletter; [Substack's privacy policy](https://substack.com/privacy) applies to that. We use the list for one thing: sending you the newsletter. We don't sell it, share it beyond Substack, or enrich it. Every issue has an unsubscribe link, and unsubscribing removes you.
 
-**Gated library access.** Parts of the [recipe library](https://library.alliwanlabs.com) require a login. Access is managed through Cloudflare Access, which processes your email address to verify you're on the access list and to log sign-ins. We see who accessed the gated area and when; we don't see more than that.
-
 **Email you send us.** If you write to us, we keep the correspondence for as long as it's useful for answering you and for our records.
 
 ## What we don't do
