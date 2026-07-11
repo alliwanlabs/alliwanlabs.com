@@ -1,0 +1,7 @@
+# alliwanlabs.com — humans and agents welcome.
+# Machine-readable overview: https://alliwanlabs.com/llms.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://alliwanlabs.com/sitemap.xml

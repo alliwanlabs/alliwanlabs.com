@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ page.title }} · Al Liwan Labs</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}" />
+<meta property="og:title" content="{{ page.title }} · Al Liwan Labs" />
+<meta property="og:image" content="{{ '/assets/images/social-card.png' | absolute_url }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="{{ '/assets/images/logo.png' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--navy-50);
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    line-height: 1.65;
+  }
+  .topbar {
+    background: var(--navy-950);
+    padding: 18px 24px;
+  }
+  .topbar .inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar img { height: 44px; width: auto; display: block; }
+  .topbar nav a {
+    color: var(--navy-100); text-decoration: none;
+    font-size: var(--text-sm); margin-left: 20px;
+  }
+  .topbar nav a:hover { color: var(--white); }
+  main {
+    max-width: 720px; margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  h1 { color: var(--navy-600); font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+  h2 { color: var(--navy-600); font-size: 1.25rem; margin: 2.2em 0 0.5em; }
+  .updated { color: var(--navy-500); font-size: var(--text-sm); margin-bottom: 2em; }
+  a { color: var(--navy-500); }
+  a:hover { color: var(--navy-600); }
+  footer {
+    border-top: 1px solid var(--navy-100);
+    max-width: 720px; margin: 0 auto;
+    padding: 24px; font-size: var(--text-sm); color: var(--navy-500);
+    display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center;
+  }
+  footer a { color: var(--navy-500); text-decoration: none; }
+  footer a:hover { color: var(--navy-600); text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <a href="{{ '/' | relative_url }}"><img src="{{ '/assets/logo/alliwan-labs-logo-white.png' | relative_url }}" alt="Al Liwan Labs" /></a>
+      <nav>
+        <a href="{{ '/announcement/' | relative_url }}">Announcement</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="{{ '/mission/' | relative_url }}">Mission</a>
+        <a href="https://library.alliwanlabs.com">Library</a>
+        <a href="https://news.alliwanlabs.com">News</a>
+      </nav>
+    </div>
+  </div>
+  <main>
+    <h1>{{ page.title }}</h1>
+    {% if page.updated %}<p class="updated">Last updated: {{ page.updated }}</p>{% endif %}
+    {{ content }}
+  </main>
+  <footer>
+    <a href="{{ '/announcement/' | relative_url }}">Announcement</a>
+    <a href="{{ '/about/' | relative_url }}">About</a>
+    <a href="{{ '/mission/' | relative_url }}">Mission</a>
+    <a href="https://news.alliwanlabs.com">News</a>
+    <a href="{{ '/terms/' | relative_url }}">Terms</a>
+    <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+    <span>Abu Dhabi · United Arab Emirates</span>
+  </footer>
+</body>
+</html>
