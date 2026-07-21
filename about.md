@@ -7,7 +7,7 @@ permalink: /about/
 
 Al Liwan Labs is a wholly-owned entity of [Al Liwan Group](https://alliwan.com), based in Abu Dhabi. Our job is to develop and test AI capabilities at arm's length from the group's core operating business.
 
-The point of the arm's length is simple: the business adopts only what has been proven, and never has to move faster than it safely should. The Lab can experiment freely precisely because it sits outside that operating business, not inside it.
+The point of the arm's length is simple. The business adopts only what has been proven, and never has to move faster than it safely should. The Lab can experiment freely precisely because it sits outside that operating business, not inside it.
 
 ## What we do
 
