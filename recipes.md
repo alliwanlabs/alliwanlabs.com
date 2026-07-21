@@ -6,7 +6,7 @@ permalink: /recipes/
 
 # Recipes
 
-Each recipe names a specific kind of work, gives the procedure, shows the data from real applications, and is explicit about where and how it fails. Read [the introduction](/) first if you haven't.
+Each recipe names a specific kind of work, gives the procedure, and shows the data from real applications. Each one is explicit about where and how it fails. Read [the introduction](/) first if you haven't.
 
 | # | Recipe | Pattern | Substrate |
 |---|--------|---------|-----------|

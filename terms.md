@@ -14,7 +14,7 @@ Al Liwan Labs is a wholly-owned entity of Al Liwan Group, based in Abu Dhabi, Un
 
 ## What this site is
 
-This site describes our work and publishes our recipes: documented patterns for working with AI, each tested in our own production use, each explicit about when and how it fails. Parts of the library sit behind a login while they are in restricted release.
+This site describes our work and publishes our recipes. These recipes are documented patterns for working with AI, each tested in our own production use, each explicit about when and how it fails. Parts of the library sit behind a login while they are in restricted release.
 
 ## What you can do with the content
 
@@ -22,11 +22,11 @@ Read it, learn from it, apply it in your own work, and share links to it. If you
 
 ## What we ask of you
 
-Don't attempt to break, probe, or overload the site or its gated areas, and don't try to access accounts or content you haven't been given access to.
+Don't attempt to break, probe, or overload the site or its gated areas. Don't try to access accounts or content you haven't been given access to.
 
 ## Honest limits
 
-The recipes describe what worked for us, in our context, at the time we wrote them. AI systems change quickly. **Test everything in your own environment before relying on it, especially where the stakes are high.** The site and its content are provided as-is: we don't accept liability for decisions you take, or systems you build, based on what you read here. Nothing on this site is legal, financial, or professional advice.
+The recipes describe what worked for us, in our context, at the time we wrote them. AI systems change quickly. **Test everything in your own environment before relying on it, especially where the stakes are high.** The site and its content are provided as-is. We don't accept liability for decisions you take, or systems you build, based on what you read here. Nothing on this site is legal, financial, or professional advice.
 
 ## Newsletter
 
