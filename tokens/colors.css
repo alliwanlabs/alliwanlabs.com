@@ -15,6 +15,16 @@
    hover/links/data accents.
    Solid colour only — no gradients (brand rule).
 
+   ---- BODY TEXT, 2026-08-06 (David) ----
+   Default body text is --gray-700 #4F5054, NOT Steel Gray #77787C.
+   Steel Gray is an official brand colour and remains the wordmark, but it
+   only reaches 4.41:1 on white and fails WCAG AA (4.5:1) for normal text.
+   It was failing worse before, at 3.69:1 on the old tinted page, so this
+   is a long-standing defect the white page surfaced rather than caused.
+   --gray-700 is the next step of the same official Steel scale and clears
+   AAA at 8.05:1, so the fix stays inside the palette.
+   Use --text-wordmark when you specifically mean the logo grey.
+
    ---- CHANGED 2026-08-06 (David) ----
    1. Primary Navy is #233165, matching the logo artwork. The earlier
       #002C6B disagreed with the logo's own wordmark navy, so every
@@ -47,8 +57,8 @@
   --ink:      #1a1b1d;   /* darkest cool neutral */
   --gray-900: #25262a;
   --gray-800: #34353a;
-  --gray-700: #4f5054;
-  --gray-600: #77787c;   /* ◀ Steel Gray — DEFAULT body text */
+  --gray-700: #4f5054;   /* ◀ DEFAULT body text — 8.05:1 on white */
+  --gray-600: #77787c;   /* ◀ Steel Gray — the WORDMARK colour */
   --gray-500: #939498;
   --gray-400: #b2b3b7;
   --gray-300: #ccced1;
@@ -87,7 +97,8 @@
   /* Text */
   --text-heading:   var(--navy-600);   /* Primary Navy — primary headings */
   --text-strong:    var(--navy-800);   /* high-contrast dark navy */
-  --text-body:      var(--gray-600);   /* Steel Gray — default body */
+  --text-body:      var(--gray-700);   /* 8.05:1 on white — see note above */
+  --text-wordmark:  var(--gray-600);   /* Steel Gray — the logo wordmark only */
   --text-muted:     var(--gray-500);
   --text-subtle:    var(--gray-400);
   --text-code:      var(--black);      /* near-black — code / dense data */
