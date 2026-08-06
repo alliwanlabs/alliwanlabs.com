@@ -7,19 +7,24 @@
    ============================================================ */
 
 :root {
-  /* ---- Elevation (Primary-Navy-tinted, restrained) ---- */
-  --shadow-xs:  0 1px 2px rgba(0, 18, 48, 0.06);
-  --shadow-sm:  0 1px 3px rgba(0, 18, 48, 0.08),
-                0 1px 2px rgba(0, 18, 48, 0.04);
-  --shadow-md:  0 4px 12px rgba(0, 18, 48, 0.09),
-                0 2px 4px rgba(0, 18, 48, 0.05);
-  --shadow-lg:  0 12px 28px rgba(0, 18, 48, 0.13),
-                0 4px 8px rgba(0, 18, 48, 0.06);
-  --shadow-xl:  0 24px 56px rgba(0, 18, 48, 0.17),
-                0 8px 16px rgba(0, 18, 48, 0.08);
+  /* ---- Elevation (Primary-Navy-tinted, restrained) ----
+     Tinted with --navy-900 #101628 = rgb(16, 22, 40). These are literal
+     rgba() rather than var() because CSS custom properties cannot be
+     interpolated into an rgba channel list; they must be re-derived by
+     hand whenever the navy scale moves. Retinted 2026-08-06 with the
+     rebuild around Primary Navy #233165. */
+  --shadow-xs:  0 1px 2px rgba(16, 22, 40, 0.06);
+  --shadow-sm:  0 1px 3px rgba(16, 22, 40, 0.08),
+                0 1px 2px rgba(16, 22, 40, 0.04);
+  --shadow-md:  0 4px 12px rgba(16, 22, 40, 0.09),
+                0 2px 4px rgba(16, 22, 40, 0.05);
+  --shadow-lg:  0 12px 28px rgba(16, 22, 40, 0.13),
+                0 4px 8px rgba(16, 22, 40, 0.06);
+  --shadow-xl:  0 24px 56px rgba(16, 22, 40, 0.17),
+                0 8px 16px rgba(16, 22, 40, 0.08);
 
-  /* Ring used for focus states — Primary Navy */
-  --ring-focus: 0 0 0 3px rgba(0, 44, 107, 0.30);
+  /* Ring used for focus states — Primary Navy #233165 = rgb(35, 49, 101) */
+  --ring-focus: 0 0 0 3px rgba(35, 49, 101, 0.30);
   --ring-inset-hair: inset 0 0 0 1px var(--border-subtle);
 
   /* ---- Motion ---- */

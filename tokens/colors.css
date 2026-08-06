@@ -1,34 +1,46 @@
 /* ============================================================
    Al Liwan — Color Tokens  (OFFICIAL Al Liwan Group brand palette)
    ------------------------------------------------------------
-   Brand palette (from the Al Liwan Group Brand Guidelines, 2026):
-     Primary Navy   #002C6B  — signature; the arch, headings, key UI
+   Brand palette:
+     Primary Navy   #233165  — signature; the arch, headings, key UI
      Deep Blue      #345593  — secondary brand blue; supporting accents
-     Light Neutral  #EFEAE7  — page backgrounds (NEVER pure #fff)
+     Light Neutral  #EFEAE7  — section bands & warm wells (not the page)
      Steel Gray     #77787C  — wordmark & DEFAULT body text (not black)
 
    "Deep navy anchors trust and institutional weight, while neutral
     tones maintain clarity and balance." — brand book, 3.1.
 
    Conventions: Primary Navy is the signature; body text is Steel
-   Gray; page backgrounds are Light Neutral; Deep Blue is the
-   secondary blue for hover/links/data accents.
+   Gray; pages are WHITE; Deep Blue is the secondary blue for
+   hover/links/data accents.
    Solid colour only — no gradients (brand rule).
+
+   ---- CHANGED 2026-08-06 (David) ----
+   1. Primary Navy is #233165, matching the logo artwork. The earlier
+      #002C6B disagreed with the logo's own wordmark navy, so every
+      branded artefact carried two navies at once. The logo wins; the
+      whole navy scale below was rebuilt around it (hue ~227°, S ~49%)
+      rather than swapping one step and leaving a hue break mid-scale.
+   2. Pages are white. The former rule was "Light Neutral #EFEAE7
+      backgrounds, never pure #fff". Light Neutral is retained as an
+      official brand colour and now carries section bands and sunken
+      wells — see --surface-band. Cards no longer lift off a tinted
+      page, so they take a hairline border for definition.
    ============================================================ */
 
 :root {
   /* ---- Navy scale (primary / signature) ---- */
-  --navy-950: #00091a;
-  --navy-900: #001230;
-  --navy-800: #001b45;
-  --navy-700: #002357;
-  --navy-600: #002c6b;   /* ◀ BRAND PRIMARY — Primary Navy, the arch */
+  --navy-950: #0a0f1e;
+  --navy-900: #101628;
+  --navy-800: #161f41;
+  --navy-700: #1d2954;
+  --navy-600: #233165;   /* ◀ BRAND PRIMARY — Primary Navy, the arch */
   --navy-500: #345593;   /* ◀ Deep Blue — secondary brand blue */
-  --navy-400: #5a78ac;
-  --navy-300: #8ba0c4;
-  --navy-200: #bcc8de;
-  --navy-100: #dde4ef;
-  --navy-50:  #eef2f8;
+  --navy-400: #5469b6;
+  --navy-300: #8694c6;
+  --navy-200: #b4bcda;
+  --navy-100: #d9dded;
+  --navy-50:  #edeff7;
 
   /* ---- Steel Gray scale (neutral — the wordmark & body text) ---- */
   --black:    #0b0b0b;   /* near-black for code / dense data / strong contrast (never #000) */
@@ -44,12 +56,12 @@
   --gray-100: #eceded;
   --gray-50:  #f5f5f6;
 
-  /* ---- Light Neutral (warm paper — page backgrounds) ---- */
+  /* ---- Light Neutral (warm paper — section bands & wells) ---- */
   --neutral-100: #f6f3f1;
   --neutral-200: #e4ddd8;
-  --pearl:    #efeae7;   /* Light Neutral — page backgrounds (= --neutral) */
+  --pearl:    #efeae7;   /* Light Neutral — section bands (= --neutral) */
   --neutral:  #efeae7;   /* alias for Light Neutral */
-  --white:    #ffffff;   /* reserved for ELEVATED surfaces (cards), not page bg */
+  --white:    #ffffff;   /* THE PAGE — and elevated cards on top of it */
 
   /* ---- Signal: interactive / links / focus — Deep Blue family ---- */
   --signal-700: var(--navy-700);
@@ -85,9 +97,15 @@
   --text-link:      var(--navy-500);   /* Deep Blue */
 
   /* Surfaces */
-  --surface-page:    var(--pearl);     /* Light Neutral, never pure white */
-  --surface-card:    var(--white);     /* elevated cards lift off Light Neutral */
-  --surface-sunken:  var(--navy-50);
+  --surface-page:    var(--white);     /* WHITE page */
+  --surface-card:    var(--white);     /* same value as the page — a card is
+                                          defined by --border-subtle and/or a
+                                          shadow, NOT by its fill. Do not give
+                                          cards a tint to force separation. */
+  --surface-band:    var(--pearl);     /* Light Neutral — alternating section
+                                          bands, so the brand neutral still has
+                                          a job now that the page is white */
+  --surface-sunken:  var(--neutral-100); /* warm well, inset against white */
   --surface-inverse: var(--navy-900);
   --surface-brand:   var(--navy-600);
   --surface-hover:   var(--gray-100);
@@ -108,5 +126,5 @@
   --focus-ring:         var(--navy-500);
 
   /* Misc */
-  --overlay-scrim:  rgba(0, 18, 48, 0.55);
+  --overlay-scrim:  rgba(16, 22, 40, 0.55);   /* --navy-900, hand-derived */
 }
