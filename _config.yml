@@ -39,6 +39,7 @@ exclude:
   - .gitignore
   - workers
   - scripts
+  - test
 
 # Theme settings
 minima:
