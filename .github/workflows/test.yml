@@ -1,0 +1,23 @@
+name: test
+
+# Runs the privacy-policy check on every pull request: every third-party host a page loads
+# resources from must be named in privacy.md.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  privacy-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Third-party hosts are named in the privacy policy
+        run: ruby test/privacy_policy_test.rb
