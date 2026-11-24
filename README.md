@@ -61,6 +61,9 @@ edits.
 | `Gemfile` | Ruby dependencies for the local preview. |
 | `recipes.md`, `_recipes/` | The `recipes` Jekyll collection, rendered under `/recipes/`. |
 | `robots.txt`, `llms.txt` | Crawler and language-model guidance files. |
+| `assets/brief/` | Images for the Al Liwan AI Brief newsletter, hosted here so that issues can link to them. |
+| `assets/brand/` | The four brand marks, at an unlinked path. |
+| `test/privacy_policy_test.rb` | Checks that every third-party host a page loads resources from is named in the privacy policy. Run `ruby test/privacy_policy_test.rb` before you add a font, script or embed. |
 
 ## Edit or add a page
 
